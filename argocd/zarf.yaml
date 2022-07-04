@@ -1,0 +1,25 @@
+kind: ZarfPackageConfig
+metadata:
+  name: argocd
+  architecture: amd64
+
+components:
+  - name: argocd
+    description: Add argocd for gitops
+    required: true
+    variables:
+      domain_name: zarf.local
+    # charts:
+    #   - name: argo-cd
+    #     url: https://argoproj.github.io/argo-helm
+    #     version: 4.9.11
+    #     namespace: argocd
+    # images:
+    #   - ghcr.io/dexidp/dex:v2.30.2
+    #   - quay.io/argoproj/argocd:v2.4.3
+    #   - docker.io/redis:7.0.0-alpine
+    manifests:
+      - name: istio-argocd
+        files:
+          - manifests/argocd-gateway.yml
+          - manifests/argocd-virtualservice.yml

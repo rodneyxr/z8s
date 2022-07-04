@@ -1,0 +1,14 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: gitea-virtualservice
+  namespace: zarf
+spec:
+  hosts:
+    - "gitea.###ZARF_DOMAIN_NAME###"
+  gateways:
+    - gitea-gateway
+  http:
+    - route:
+        - destination:
+            host: zarf-gitea-http

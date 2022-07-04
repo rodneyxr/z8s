@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: registry-virtualservice
+  namespace: zarf
+spec:
+  hosts:
+    - "registry.###ZARF_DOMAIN_NAME###"
+  gateways:
+    - registry-gateway
+  http:
+    - route:
+        - destination:
+            host: zarf-docker-registry
+            port:
+              number: 5000

@@ -1,0 +1,7 @@
+watchedNamespaces:
+  - istio-system
+values:
+  gateways:
+    istio-ingressgateway:
+      sds:
+        enabled: true

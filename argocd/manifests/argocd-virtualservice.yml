@@ -1,0 +1,14 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: argocd-virtualservice
+  namespace: argocd
+spec:
+  hosts:
+    - "argocd.###ZARF_DOMAIN_NAME###"
+  gateways:
+    - argocd-gateway
+  http:
+    - route:
+      - destination:
+          host: zarf-argo-cd-argocd-server

@@ -1,0 +1,40 @@
+kind: ZarfPackageConfig
+metadata:
+  name: istio
+
+components:
+  - name: cert-manager
+    required: true
+    import:
+      path: ../cert-manager
+
+  # https://github.com/istio/istio/tree/1.14.1/manifests/charts/istio-operator
+  - name: istio-operator
+    description: Deploy istio-operator
+    required: true
+    variables:
+      domain_name: zarf.local
+    charts:
+      - name: istio-operator
+        url: https://stevehipwell.github.io/helm-charts/
+        version: 2.6.1
+        namespace: istio-operator
+        valuesFiles:
+          - istio-operator-values.yml
+    images:
+      - docker.io/istio/operator:1.14.1
+      - docker.io/istio/pilot:1.14.1
+      - docker.io/istio/proxyv2:1.14.1
+      - docker.io/rancher/klipper-lb:v0.3.4
+    manifests:
+      - name: istio-controlplane
+        files:
+          - manifests/istio-operator.yml
+      - name: istio-registry
+        files:
+          - manifests/istio-registry/registry-gateway.yml
+          - manifests/istio-registry/registry-virtualservice.yml
+      - name: istio-gitea
+        files:
+          - manifests/istio-gitea/gitea-gateway.yml
+          - manifests/istio-gitea/gitea-virtualservice.yml
