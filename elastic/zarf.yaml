@@ -1,0 +1,31 @@
+kind: ZarfPackageConfig
+metadata:
+  name: elastic
+
+components:
+  - name: elasticsearch
+    description: Deploy elasticsearch
+    required: true
+    variables:
+      domain_name: zarf.local
+    charts:
+      - name: elasticsearch
+        url: https://helm.elastic.co/
+        version: 7.17.3
+        namespace: elastic
+        valuesFiles:
+          - values.yml
+    images:
+      - docker.elastic.co/elasticsearch/elasticsearch:7.17.3
+    # manifests:
+    #   - name: istio-controlplane
+    #     files:
+    #       - manifests/istio-operator.yml
+    #   - name: istio-registry
+    #     files:
+    #       - manifests/istio-registry/registry-gateway.yml
+    #       - manifests/istio-registry/registry-virtualservice.yml
+    #   - name: istio-gitea
+    #     files:
+    #       - manifests/istio-gitea/gitea-gateway.yml
+    #       - manifests/istio-gitea/gitea-virtualservice.yml

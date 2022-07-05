@@ -16,21 +16,21 @@ components:
     import:
       path: ../packages/argocd
 
-  - name: dsop-core-assets
-    description: "Git repositories and OCI images used by DSOP Core"
-    required: true
-    repos:
-      - https://gitlab.com/dark-aster/argonauts.git # @1.0.0
+  # - name: dsop-core-assets
+  #   description: "Git repositories and OCI images used by DSOP Core"
+  #   required: true
+  #   repos:
+  #     - https://gitlab.com/dark-aster/argonauts.git # @1.0.0
 
-    images:
-      # istio-controlplane
-      - registry1.dso.mil/ironbank/big-bang/base:1.0.0
-      - registry1.dso.mil/ironbank/opensource/istio/pilot:1.13.2
-      - registry1.dso.mil/ironbank/opensource/istio/proxyv2:1.13.2
-      - registry1.dso.mil/ironbank/opensource/istio/install-cni:1.13.2
+    # images:
+    #   # istio-controlplane
+    #   - registry1.dso.mil/ironbank/big-bang/base:1.0.0
+    #   - registry1.dso.mil/ironbank/opensource/istio/pilot:1.13.2
+    #   - registry1.dso.mil/ironbank/opensource/istio/proxyv2:1.13.2
+    #   - registry1.dso.mil/ironbank/opensource/istio/install-cni:1.13.2
 
-      # istio-operator
-      - registry1.dso.mil/ironbank/opensource/istio/operator:1.13.2
+    #   # istio-operator
+    #   - registry1.dso.mil/ironbank/opensource/istio/operator:1.13.2
 
       # policy (OPA Gatekeeper)
       # - registry1.dso.mil/ironbank/opensource/kubernetes/kubectl:v1.22.2
