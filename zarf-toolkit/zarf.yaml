@@ -1,0 +1,21 @@
+kind: ZarfPackageConfig
+metadata:
+  name: zarf-toolkit
+  description: "Deploy zarf toolkit"
+  architecture: amd64
+
+components:
+  - name: istio
+    required: true
+    import:
+      path: ../istio
+
+  - name: argocd
+    required: false
+    import:
+      path: ../argocd
+
+  - name: elastic
+    required: false
+    import:
+      path: ../elastic

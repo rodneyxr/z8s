@@ -3,11 +3,6 @@ metadata:
   name: istio
 
 components:
-  - name: cert-manager
-    required: true
-    import:
-      path: ../cert-manager
-
   # https://github.com/istio/istio/tree/1.14.1/manifests/charts/istio-operator
   - name: istio-operator
     description: Deploy istio-operator
@@ -39,6 +34,12 @@ components:
         files:
           - manifests/istio-gitea/gitea-gateway.yml
           - manifests/istio-gitea/gitea-virtualservice.yml
+      
+  - name: cert-manager
+    required: false
+    import:
+      path: ../cert-manager
+    manifests:
       - name: ingress-cert
         files:
           - manifests/ingress-cert.yml
