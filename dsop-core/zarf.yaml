@@ -16,6 +16,11 @@ components:
     import:
       path: ../packages/argocd
 
+  - name: elastic
+    required: false
+    import:
+      path: ../packages/elastic
+
   # - name: dsop-core-assets
   #   description: "Git repositories and OCI images used by DSOP Core"
   #   required: true

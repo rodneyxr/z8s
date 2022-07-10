@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: elasticsearch-virtualservice
+  namespace: elastic
+spec:
+  hosts:
+    - "elasticsearch.###ZARF_DOMAIN_NAME###"
+  gateways:
+    - elasticsearch-gateway
+  http:
+    - route:
+        - destination:
+            host: elasticsearch-master
+            port:
+              number: 9200

@@ -1,0 +1,2 @@
+# This will allow elasticsearch to be deployed to a single node cluster
+antiAffinity: "soft"

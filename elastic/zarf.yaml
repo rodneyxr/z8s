@@ -14,18 +14,31 @@ components:
         version: 7.17.3
         namespace: elastic
         valuesFiles:
-          - values.yml
+          - values-elasticsearch.yml
     images:
       - docker.elastic.co/elasticsearch/elasticsearch:7.17.3
-    # manifests:
-    #   - name: istio-controlplane
-    #     files:
-    #       - manifests/istio-operator.yml
-    #   - name: istio-registry
-    #     files:
-    #       - manifests/istio-registry/registry-gateway.yml
-    #       - manifests/istio-registry/registry-virtualservice.yml
-    #   - name: istio-gitea
-    #     files:
-    #       - manifests/istio-gitea/gitea-gateway.yml
-    #       - manifests/istio-gitea/gitea-virtualservice.yml
+    manifests:
+      - name: istio-elasticsearch
+        files:
+          - manifests/elasticsearch-gateway.yml
+          - manifests/elasticsearch-virtualservice.yml
+
+  - name: kibana
+    description: Deploy kibana
+    required: false
+    variables:
+      domain_name: zarf.local
+    charts:
+      - name: kibana
+        url: https://helm.elastic.co/
+        version: 7.17.3
+        namespace: elastic
+        # valuesFiles:
+        #   - values-kibana.yml
+    images:
+      - docker.elastic.co/kibana/kibana:7.17.3
+    manifests:
+      - name: istio-kibana
+        files:
+          - manifests/kibana-gateway.yml
+          - manifests/kibana-virtualservice.yml

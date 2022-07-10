@@ -8,3 +8,6 @@ spec:
   commonName: "###ZARF_DOMAIN_NAME###"
   dnsNames:
   - "###ZARF_DOMAIN_NAME###"
+  issuerRef:
+      name: ca-issuer
+      kind: Issuer

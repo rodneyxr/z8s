@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: kibana-virtualservice
+  namespace: elastic
+spec:
+  hosts:
+    - "kibana.###ZARF_DOMAIN_NAME###"
+  gateways:
+    - kibana-gateway
+  http:
+    - route:
+        - destination:
+            host: zarf-kibana-kibana
+            port:
+              number: 5601

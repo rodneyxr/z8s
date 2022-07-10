@@ -20,7 +20,7 @@ components:
         version: 2.6.1
         namespace: istio-operator
         valuesFiles:
-          - istio-operator-values.yml
+          - values-istio-operator.yml
     images:
       - docker.io/istio/operator:1.14.1
       - docker.io/istio/pilot:1.14.1
@@ -30,6 +30,7 @@ components:
       - name: istio-controlplane
         files:
           - manifests/istio-operator.yml
+      # Add gateways and virtualservices for zarf built-ins
       - name: istio-registry
         files:
           - manifests/istio-registry/registry-gateway.yml
@@ -38,3 +39,6 @@ components:
         files:
           - manifests/istio-gitea/gitea-gateway.yml
           - manifests/istio-gitea/gitea-virtualservice.yml
+      - name: ingress-cert
+        files:
+          - manifests/ingress-cert.yml
